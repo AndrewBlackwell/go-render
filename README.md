@@ -18,4 +18,6 @@
    git clone https://github.com/AndrewBlackwell/go-render.git
    ```
 2. Run the program:
-   `bash go run ./cmd`
+   ```bash
+   go run ./cmd
+   ```
