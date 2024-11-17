@@ -2,24 +2,22 @@ package main
 
 import (
 	"fmt"
+	"os"
 
-	"github.com/AndrewBlackwell/go-render/renderer"
+	"github.com/AndrewBlackwell/go-render/internal/util"
 )
 
 func main() {
-	triangles := []renderer.Triangle{
-		renderer.NewTriangle(
-			renderer.NewVector(1, 2, 3),
-			renderer.NewVector(4, 5, 6),
-			renderer.NewVector(7, 8, 9),
-		),
+	file, err := os.Open("test/obj/test.obj")
+	if err != nil {
+		panic(err)
 	}
-	mesh := renderer.NewMesh(triangles)
-	fmt.Println("Original Mesh:", mesh)
+	defer file.Close()
 
-	translated := mesh.Add(renderer.NewVector(1, 1, 1))
-	fmt.Println("Translated Mesh:", translated)
+	mesh, err := util.LoadOBJ(file)
+	if err != nil {
+		panic(err)
+	}
 
-	scaled := mesh.ScalarMult(2)
-	fmt.Println("Scaled Mesh:", scaled)
+	fmt.Println("Loaded Mesh:", mesh)
 }
