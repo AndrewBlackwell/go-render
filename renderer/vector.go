@@ -34,3 +34,8 @@ func (a Vector) ScalarMult(scalar float64) Vector {
 func (a Vector) ScalarDiv(scalar float64) Vector {
 	return NewVector(a.X/scalar, a.Y/scalar, a.Z/scalar)
 }
+
+// Dot Product of two vectors
+func (a Vector) Dot(b Vector) float64 {
+	return a.X*b.X + a.Y*b.Y + a.Z*b.Z
+}
