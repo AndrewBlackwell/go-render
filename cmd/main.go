@@ -9,10 +9,14 @@ import (
 func main() {
 	v1 := renderer.NewVector(1, 2, 3)
 	v2 := renderer.NewVector(4, 5, 6)
+	v3 := renderer.NewVector(7, 8, 9)
 
-	sum := v1.Add(v2)
-	dot := v1.Dot(v2)
+	triangle := renderer.NewTriangle(v1, v2, v3)
+	fmt.Println("Original Triangle:", triangle)
 
-	fmt.Println("Sum:", sum)
-	fmt.Println("Dot Product:", dot)
+	translated := triangle.Add(renderer.NewVector(1, 1, 1))
+	fmt.Println("Translated Triangle:", translated)
+
+	scaled := triangle.A.ScalarMult(2)
+	fmt.Println("Scaled Triangle:", scaled)
 }
